@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-paymeaws-staging-183955-authRole",
+      "UnauthRoleArn": "arn:aws:iam::835259586060:role/amplify-paymeaws-staging-183955-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::835259586060:role/amplify-paymeaws-staging-183955-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-paymeaws-staging-183955-deployment",
+      "UnauthRoleName": "amplify-paymeaws-staging-183955-unauthRole",
+      "StackName": "amplify-paymeaws-staging-183955",
+      "StackId": "arn:aws:cloudformation:us-east-1:835259586060:stack/amplify-paymeaws-staging-183955/cfc430a0-abcd-11ed-8336-0aefacdc0031",
+      "AmplifyAppId": "d2okkoyzq0n7zh"
+    },
+    "categories": {
+      "auth": {
+        "PaymeAWS": {}
+      }
+    }
+  }
+}
