@@ -7,6 +7,7 @@ import { DataStore } from '@aws-amplify/datastore';
 import { Transaction } from './src/models';
 import { Auth } from "aws-amplify";
 import { useState, useEffect } from 'react';
+import Transactions from "./src/components/Transactions";
 
 
 Amplify.configure(awsconfig)
@@ -15,6 +16,13 @@ Amplify.configure(awsconfig)
 
 
 export default function App() {
+
+  useEffect(() => {
+    const subscription = DataStore.start()
+
+
+
+  }, []);
 
   const sendMoney = async () => {
     console.log("sending to " + text)
@@ -56,15 +64,21 @@ export default function App() {
         }}
       >
         <View style={styles.container}>
-          <Text>Open up App.js to start working on your app!</Text>
-          <Button title='send' onPress={() => sendMoney()} />
-          <StatusBar style="auto" />
-          <TextInput
-            style={{ height: 40 }}
-            placeholder="Destination email"
-            onChangeText={newMail => setText(newMail)}
-            defaultValue={text}
-          />
+          <View style={{ flex: 2 }}>
+            <Text>Open up App.js to start working on your app!</Text>
+            <Button title='send' onPress={() => sendMoney()} />
+            <StatusBar style="auto" />
+            <TextInput
+              style={{ height: 40 }}
+              placeholder="Destination email"
+              onChangeText={newMail => setText(newMail)}
+              defaultValue={text}
+            />
+          </View>
+          <View style={{ flex: 4 }}>
+            <Transactions />
+          </View>
+
         </View>
       </Authenticator>
     </Authenticator.Provider>

@@ -15,6 +15,7 @@ type EagerTransaction = {
   readonly amount?: number | null;
   readonly from?: string | null;
   readonly to?: string | null;
+  readonly owner?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -28,6 +29,7 @@ type LazyTransaction = {
   readonly amount?: number | null;
   readonly from?: string | null;
   readonly to?: string | null;
+  readonly owner?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
