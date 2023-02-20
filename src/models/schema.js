@@ -31,6 +31,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "owner": {
+                    "name": "owner",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -53,20 +60,26 @@ export const schema = {
             "attributes": [
                 {
                     "type": "model",
-                    "properties": {}
+                    "properties": {
+                        "subscriptions": {
+                            "level": "public"
+                        }
+                    }
                 },
                 {
                     "type": "auth",
                     "properties": {
                         "rules": [
                             {
-                                "allow": "public",
+                                "provider": "userPools",
+                                "ownerField": "owner",
+                                "allow": "owner",
                                 "operations": [
-                                    "create",
+                                    "read",
                                     "update",
-                                    "delete",
-                                    "read"
-                                ]
+                                    "create"
+                                ],
+                                "identityClaim": "cognito:username"
                             }
                         ]
                     }
@@ -76,6 +89,6 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "codegenVersion": "3.3.4",
-    "version": "8a37fccd7e044c8450450aec0ba95ff7"
+    "codegenVersion": "3.3.5",
+    "version": "50385d09382feb449462056c42a0432f"
 };

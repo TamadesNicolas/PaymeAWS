@@ -1,12 +1,26 @@
 {
   "api": {
     "PaymeAWS": {
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "PaymeAWS"
+        }
+      ],
       "output": {
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AWS_IAM"
+            },
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authPaymeAWS"
+              }
             }
           ],
           "defaultAuthentication": {
