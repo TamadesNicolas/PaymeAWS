@@ -5,6 +5,8 @@ import { Button } from "react-native-paper";
 import { RFPercentage} from "react-native-responsive-fontsize";
 import PressableButton from "../components/PressableButton";
 import { Auth } from "aws-amplify";
+import { DataStore } from '@aws-amplify/datastore';
+import { TransactionOwnerOnly, TransactionCognitoOnly,TransactionBoth } from '../models';
 
 
 export default ProfileIconsView = () => {
@@ -39,40 +41,64 @@ export default ProfileIconsView = () => {
             <TouchableHighlight style={styles.TouchableButton}                   
                     underlayColor={'#bfbfbf'}
                     onPress={async () => {
-                    try {
+                   // try {
                     console.log("pressed")
-                    }
-                    catch (err) {
-                      console.error(err);
-                    }
+                    await DataStore.save(
+                      new TransactionCognitoOnly({
+                      "amount": 123.45,
+                      "from": "contact@tamades.com",
+                      "to": "nicolas@tamades.com",
+                      "owner": "contact@tamades.com"
+                    })
+                  );
+                   // }
+                   // catch (err) {
+                    //  console.error(err);
+                    //}
                   }}>
-                <PressableButton IconName={'call-made'} ButtonName={'Send Banana'}/>
+                <PressableButton IconName={'call-made'} ButtonName={'TransactionCognitoOnly'}/>
               </TouchableHighlight>
               <TouchableHighlight style={styles.TouchableButton}                   
                     underlayColor={'#bfbfbf'}
                     onPress={async () => {
-                    try {
-                    console.log("pressed")
-                    }
-                    catch (err) {
-                      console.error(err);
-                    }
-                  }}>
-                <PressableButton IconName={'call-received'} ButtonName={'Receive Banana'}/>
+                     // try {
+                        console.log("pressed")
+                        await DataStore.save(
+                          new TransactionOwnerOnly({
+                          "amount": 9123.45,
+                          "from": "contact@tamades.com",
+                          "to": "nicolas@tamades.com",
+                          "owner": "contact@tamades.com"
+                        })
+                      );
+                      //  }
+                     //   catch (err) {
+                      //    console.error(err);
+                      //  }
+                      }}>
+                <PressableButton IconName={'call-received'} ButtonName={'TransactionOwnerOnly'}/>
               </TouchableHighlight>
             </View>
             <View style={styles.bodyButtonsBottom}>
             <TouchableHighlight style={styles.TouchableButton}                   
                     underlayColor={'#bfbfbf'}
                     onPress={async () => {
-                    try {
-                    console.log("pressed")
-                    }
-                    catch (err) {
-                      console.error(err);
-                    }
-                  }}>
-                <PressableButton IconName={'vertical-align-bottom'} ButtonName={'Buy Banana'}/>
+                    //  try {
+                        console.log("pressed")
+                        await DataStore.save(
+                          new TransactionBoth({
+                          "amount": 8123.45,
+                          "from": "contact@tamades.com",
+                          "to": "nicolas@tamades.com",
+                          "owner": "contact@tamades.com"
+                        })
+                      );
+                     //   }
+                      //  catch (err) {
+                       //   console.error(err);
+                       // }
+                      }}>
+                <PressableButton IconName={'vertical-align-bottom'} ButtonName={'TransactionBoth'}/>
               </TouchableHighlight>
               <TouchableHighlight style={styles.TouchableButton}                   
                     underlayColor={'#bfbfbf'}

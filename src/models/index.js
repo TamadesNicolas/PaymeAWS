@@ -4,8 +4,10 @@ import { schema } from './schema';
 
 
 
-const { Transaction } = initSchema(schema);
+const { TransactionOwnerOnly, TransactionCognitoOnly, TransactionBoth } = initSchema(schema);
 
 export {
-  Transaction
+  TransactionOwnerOnly,
+  TransactionCognitoOnly,
+  TransactionBoth
 };

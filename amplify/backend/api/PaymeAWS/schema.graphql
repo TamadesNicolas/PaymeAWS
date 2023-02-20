@@ -1,8 +1,23 @@
-type Transaction @model(subscriptions: { level: public }) @auth(rules: [{allow: owner, operations: [read, update, create]}]) {
+type TransactionOwnerOnly @model @auth(rules: [{allow: owner}]) {
   id: ID!
   amount: Float
   from: String
   to: String
   owner: String
 }
- 
+
+type TransactionCognitoOnly @model @auth(rules: [{allow: private}]) {
+  id: ID!
+  amount: Float
+  from: String
+  to: String
+  owner: String
+}
+
+type TransactionBoth @model @auth(rules: [{allow: private}, {allow: owner}]) {
+  id: ID!
+  amount: Float
+  from: String
+  to: String
+  owner: String
+} 
