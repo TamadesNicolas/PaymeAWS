@@ -1,8 +1,9 @@
 
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
 import { Button } from "react-native-paper";
 import { RFPercentage} from "react-native-responsive-fontsize";
+import PressableButton from "../components/PressableButton";
 import { Auth } from "aws-amplify";
 
 
@@ -35,69 +36,58 @@ export default ProfileIconsView = () => {
             </View>
             <View style={styles.bodyButtons}>
             <View style={styles.bodyButtonsTop}>
-              <Button
-                  labelStyle={styles.buttontext}
-                  contentStyle={styles.buttonLocalMoney}
-                  mode="elevated"
-                  onPress={async () => {
+            <TouchableHighlight style={styles.TouchableButton}                   
+                    underlayColor={'#bfbfbf'}
+                    onPress={async () => {
                     try {
                     console.log("pressed")
                     }
                     catch (err) {
                       console.error(err);
                     }
-                  }}
-                >
-                  Send Banana
-                </Button>
-                <Button
-                  labelStyle={styles.buttontext}
-                  contentStyle={styles.buttonLocalMoney}
-                  mode="elevated"
-                  onPress={async () => {
+                  }}>
+                <PressableButton IconName={'call-made'} ButtonName={'Send Banana'}/>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.TouchableButton}                   
+                    underlayColor={'#bfbfbf'}
+                    onPress={async () => {
                     try {
                     console.log("pressed")
                     }
                     catch (err) {
                       console.error(err);
                     }
-                  }}
-                >
-                  Receive Banana
-                </Button>
+                  }}>
+                <PressableButton IconName={'call-received'} ButtonName={'Receive Banana'}/>
+              </TouchableHighlight>
             </View>
             <View style={styles.bodyButtonsBottom}>
-              <Button
-                  labelStyle={styles.buttontext}
-                  contentStyle={styles.buttonExchange}
-                  mode="elevated"
-                  onPress={async () => {
+            <TouchableHighlight style={styles.TouchableButton}                   
+                    underlayColor={'#bfbfbf'}
+                    onPress={async () => {
                     try {
                     console.log("pressed")
                     }
                     catch (err) {
                       console.error(err);
                     }
-                  }}
-                >
-                  Buy Banana
-                </Button>
-                <Button
-                  labelStyle={styles.buttontext}
-                  contentStyle={styles.buttonExchange}
-                  mode="elevated"
-                  onPress={async () => {
+                  }}>
+                <PressableButton IconName={'vertical-align-bottom'} ButtonName={'Buy Banana'}/>
+              </TouchableHighlight>
+              <TouchableHighlight style={styles.TouchableButton}                   
+                    underlayColor={'#bfbfbf'}
+                    onPress={async () => {
                     try {
                     console.log("pressed")
                     }
                     catch (err) {
                       console.error(err);
                     }
-                  }}
-                >
-                  Sell Banana
-                </Button>
+                  }}>
+                <PressableButton IconName={'vertical-align-top'} ButtonName={'Sell Banana'}/>
+              </TouchableHighlight>
             </View>
+
             </View>
       </View>
     </View>
@@ -117,9 +107,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttontext: {
-    lineHeight: RFPercentage(3),
+    lineHeight: RFPercentage(2),
     color: "black",
-    fontSize: RFPercentage(3),
+    fontSize: RFPercentage(2),
     textAlign: "center",
 
   },
@@ -142,12 +132,12 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   textName: {
-    fontSize: 22,
+    fontSize: RFPercentage(2),
     color: '#FFFFFF',
     fontWeight: '600',
   },
   textSolde: {
-    fontSize: 42,
+    fontSize: RFPercentage(3.5),
     //color: '#FFFFFF',
     fontWeight: '600',
   },
@@ -171,7 +161,7 @@ bodyContent: {
     alignItems: 'stretch',
     flexDirection:'column',
     //justifyContent:'space-around',
-    //backgroundColor:'yellow',
+   // backgroundColor:'yellow',
     //padding: 30,
   },
   bodyButtonsTop: {
@@ -187,9 +177,34 @@ bodyContent: {
     flex: 1,
     alignItems: 'center',
     flexDirection:'row',
-    justifyContent: 'space-around',
-   // backgroundColor:'purple',
+    justifyContent:'space-around',
+   // backgroundColor:'orange',
     marginVertical:'2%',
   },
-
+  bodyButtonsTest: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection:'row',
+    justifyContent:'space-around',
+    backgroundColor:'orange',
+    marginVertical:'2%',
+    //padding: 30,
+  },
+  TouchableButton: {
+    flex:1,
+    backgroundColor: "#f4f4f4",
+    margin: "5%",
+    //Add border + shadow
+    borderRadius: 21,
+    borderWidth: 0,
+    borderColor: "#gray",
+    shadowColor: "black",
+    shadowOffset: {
+      width: 0,
+      height: 0
+    },
+    elevation: 9,
+    shadowOpacity: 1,
+    shadowRadius: 0,
+  },
 })
